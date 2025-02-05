@@ -6,24 +6,29 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Document</title>
 </head>
-<body class="bg-black">
-    <div>
-        <div>
-            <a href="">
-                <img src="{{ Vite::asset('resources/images/logo.svg')}}" alt="Logo of the company"/>
-            </a>
+<body class="bg-black text-white ">
+    <div class="px-10">
+        <nav class="flex justify-between items-center py-4 border-b border-white/15">
+            <div>
+                <a href="">
+                    <img src="{{ Vite::asset('resources/images/logo.svg')}}" alt="Logo of the company"/>
+                </a>
 
-        </div>
-        <nav>
-            <a href="/">Link</a>
-            <a href="/">Link</a>
-            <a href="/">Link</a>
+            </div>
+
+            <div class="space-x-6 font-bold">
+                <a href="/">Jobs</a>
+                <a href="/">Career</a>
+                <a href="/">Salaries</a>
+                <a href="/">Companies</a>
+            </div>
+
+            <div>
+                Post a Job
+            </div>
         </nav>
-        <div>
-            Post a Job
-        </div>
 
-        <main>
+        <main class="mt-10">
             {{ $slot }}
         </main>
     </div>
