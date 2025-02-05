@@ -22,11 +22,11 @@
 
         <section>
             <x-section-heading>Recent Jobs</x-section-heading>
-
-            <div class="grid lg:grid-cols-3 gap-8 mt-6">
-                <x-job-card/>
-                <x-job-card/>
-                <x-job-card/>
+            <div class="mt-4 space-x-2">
+                <x-tag>Tag</x-tag>
+                <x-tag>Tag</x-tag>
+                <x-tag>Tag</x-tag>
+                <x-tag>Tag</x-tag>
             </div>
         </section>
     </div>
