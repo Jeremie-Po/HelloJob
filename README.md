@@ -107,3 +107,42 @@ refresh the database
 ```
 sail art migrate:fresh
 ```
+
+- 3 create relations
+
+```
+ public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
+```
+
+- 4 factory
+
+```
+ public function definition(): array
+    {
+        return [
+            'name' => $this->faker->name(),
+            'logo' => $this->faker->imageUrl(),
+            'user_id' => User::factory(),
+        ];
+    }
+```
+
+- 5 Make test with pest TDD
+
+```
+sail art make:test
+```
+
+launch test :
+
+```
+sail artisan test
+```
