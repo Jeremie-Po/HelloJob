@@ -15,6 +15,6 @@
             <x-tag>Tag</x-tag>
         </div>
 
-        <img class='rounded-xl' src="https://placehold.co/42x42" alt=""/>
+        <x-employer-logo :width='42'/>
     </div>
 </div>
