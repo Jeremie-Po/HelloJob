@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Employer;
 use App\Models\Job;
+use Illuminate\Container\Attributes\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,5 +27,14 @@ class JobTest extends TestCase
             'employer_id' => $employer->id,
         ]);
         $this->assertInstanceOf(Employer::class, $job->employer);
+    }
+
+    public function test_it_can_have_a_tag(): void
+    {
+        $job = Job::factory()->create();
+
+        $job->tag('tag');
+
+        $this->assertCount(1, $job->tags);
     }
 }
