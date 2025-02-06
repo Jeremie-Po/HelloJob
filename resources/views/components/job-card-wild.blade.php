@@ -1,4 +1,4 @@
-<div class="flex gap-x-6 rounded-xl p-4 bg-white/5 border border-transparent hover:border-blue-600 group transition-colors duration-300">
+<x-panel class="flex gap-x-6">
     <div>
         <x-employer-logo :width='100'/>
     </div>
@@ -16,4 +16,4 @@
         <x-tag>Tag</x-tag>
         <x-tag>Tag</x-tag>
     </div>
-</div>
+</x-panel>
