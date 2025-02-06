@@ -11,6 +11,8 @@ class Tag extends Model
     /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory;
 
+    protected $guarded = [];
+
     public function Jobs(): belongsToMany
     {
         return $this->belongsToMany(Job::class);
