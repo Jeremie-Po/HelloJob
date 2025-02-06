@@ -13,7 +13,7 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
                 @foreach($jobs as $job)
-                    <x-job-card :$job/>
+                    <x-job-card :job="$job"/>
                 @endforeach
             </div>
         </section>
@@ -32,7 +32,7 @@
 
             <div class="space-y-6 mt-6">
                 @foreach($jobs as $job)
-                    <x-job-card-wild/>
+                    <x-job-card-wild :job="$job"/>
                 @endforeach
             </div>
         </section>

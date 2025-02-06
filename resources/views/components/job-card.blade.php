@@ -1,7 +1,7 @@
 @props(['job'])
 
 <x-panel class="flex flex-col items-center text-center">
-    <div class="self-start text-sm">Laracast</div>
+    <div class="self-start text-sm">{{ $job->employer->name }}</div>
 
     <div class="py-8">
         <h3 class="group-hover:text-blue-600 text-xl font-bold transition-colors duration-300">Video Producer</h3>
@@ -11,7 +11,7 @@
     <div class="flex justify-between items-center w-full">
         <div class="space-x-2">
             @foreach($job->tags as $tag)
-                <x-tag size="small" :$tag/>
+                <x-tag :$tag size="small"/>
             @endforeach
         </div>
 
