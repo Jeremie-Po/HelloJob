@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employer;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Validation\Rules\Password;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -30,22 +21,21 @@ class RegisteredUserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        $userAttributes = $request->validate([
-            'name' => 'required',
-            'email' => ['required', 'email', 'unique:users,email', 'max:255'],
-            'password' => ['required', 'confirmed', Password::min(6)],
+        $userAttributes = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', Password::min(6), 'confirmed'],
         ]);
 
-        $employerAttributes = $request->validate([
-            'employer' => 'required',
-            'logo' => ['required', File::types(['jpg', 'jpeg', 'png', 'bmp', 'webp'])],
+        $employerAttributes = request()->validate([
+            'employer' => ['required', 'string', 'max:255'],
+            'logo' => [File::types(['png', 'jpg', 'webp'])],
         ]);
+        $user = User::create($userAttributes);
 
-        $user = User::create([$userAttributes]);
-
-        $logoPath = $request->logo->store('logos');
+        $logoPath = request()->logo->store('logos');
 
         $user->employer()->create([
             'name' => $employerAttributes['employer'],
@@ -54,38 +44,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        redirect('/');
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
