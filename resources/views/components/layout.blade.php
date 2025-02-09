@@ -26,10 +26,18 @@
                 <a href="/">Salaries</a>
                 <a href="/">Companies</a>
             </div>
+            @auth()
+                <div>
+                    Post a Job
+                </div>
+            @endauth
 
-            <div>
-                Post a Job
-            </div>
+            @guest()
+                <div class="space-x-6 font-bold">
+                    <a href="/register">Register</a>
+                    <a href="/login">LogIn</a>
+                </div>
+            @endguest
         </nav>
 
         <main class="mt-10 max-w-[986px] mx-auto">
