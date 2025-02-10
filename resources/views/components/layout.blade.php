@@ -28,7 +28,7 @@
             </div>
             @auth()
                 <div>
-                    Post a Job
+                    <a href="/jobs/create">Post a Job</a>
                 </div>
             @endauth
 
